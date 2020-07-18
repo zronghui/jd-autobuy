@@ -755,9 +755,8 @@ class JDWrapper(object):
 def main(options):
     # 
     jd = JDWrapper()
-    if not jd.checkLogin():
-        if not jd.login_by_QR():
-            return
+    if not jd.checkLogin() and not jd.login_by_QR():
+        return
 
     while not jd.buy(options) and options.flush:
         time.sleep(options.wait / 1000.0)
